@@ -14,9 +14,26 @@ class CreateTaskViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func toggleCompleted(_ sender: UIButton){
+        
     }
 }

@@ -14,4 +14,6 @@ class TaskTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var completedButton: UIButton!
+    @IBOutlet weak var taskNameLabel: UILabel!
 }

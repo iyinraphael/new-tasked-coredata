@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHy-VJ-Fxf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,29 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cGY-yp-npj" id="DD5-yA-cuU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BS-ue-nd9">
+                                            <rect key="frame" x="20" y="11" width="20" height="22"/>
+                                            <state key="normal" image="circle" catalog="system"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hii-fX-ElS">
+                                            <rect key="frame" x="48" y="11.5" width="89" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1BS-ue-nd9" firstAttribute="centerY" secondItem="DD5-yA-cuU" secondAttribute="centerY" id="2fK-lq-2sV"/>
+                                        <constraint firstItem="hii-fX-ElS" firstAttribute="leading" secondItem="1BS-ue-nd9" secondAttribute="trailing" constant="8" id="7sn-px-Oc6"/>
+                                        <constraint firstItem="hii-fX-ElS" firstAttribute="centerY" secondItem="1BS-ue-nd9" secondAttribute="centerY" id="H12-cC-Wrw"/>
+                                        <constraint firstItem="1BS-ue-nd9" firstAttribute="leading" secondItem="DD5-yA-cuU" secondAttribute="leadingMargin" id="Zqz-WB-QEd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="completedButton" destination="1BS-ue-nd9" id="ieD-QK-MMS"/>
+                                    <outlet property="taskNameLabel" destination="hii-fX-ElS" id="Lpb-jp-Ab4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -90,6 +112,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="wJg-ov-Msc"/>
                                                 </constraints>
                                                 <state key="normal" image="circle" catalog="system"/>
+                                                <connections>
+                                                    <action selector="toggleCompleted:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WSn-p5-nWX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -131,9 +156,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Task" id="qv1-Vy-Kdk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aUq-ju-lPp"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="G51-De-DQT"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aUq-ju-lPp">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="UWi-Sg-AyU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="G51-De-DQT">
+                            <connections>
+                                <action selector="save:" destination="BYZ-38-t0r" id="oIg-ln-hEv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="kNB-OM-6TW" id="4WX-hQ-3Zt"/>
+                        <outlet property="notesTextView" destination="R04-F0-saK" id="EaS-0r-EOH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
