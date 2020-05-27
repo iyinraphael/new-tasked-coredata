@@ -11,6 +11,8 @@ import CoreData
 
 class CoreDataStack {
     
+    static let shared = CoreDataStack()
+    
     var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Tasks")
         container.loadPersistentStores { _, error in

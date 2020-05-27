@@ -11,6 +11,7 @@ import UIKit
 class CreateTaskViewController: UIViewController {
 
     // MARK: - Properties
+    var complete = false
     
     // MARK: - IBOutlets
     
@@ -30,10 +31,22 @@ class CreateTaskViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        guard let name = nameTextField.text, !name.isEmpty else {return}
+        let notes = notesTextView.text
+        
+        Task(name: name, notes: notes, complete: complete)
+        do {
+            try CoreDataStack.shared.mainContext.save()
+            navigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            NSLog("Error saving managed object context")
+        }
         
     }
     
     @IBAction func toggleCompleted(_ sender: UIButton){
+        complete.toggle()
         
+        sender.setImage(complete ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"), for: .normal)
     }
 }
