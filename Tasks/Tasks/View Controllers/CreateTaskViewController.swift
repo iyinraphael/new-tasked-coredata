@@ -17,6 +17,7 @@ class CreateTaskViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var prirotiyControl: UISegmentedControl!
     
     // MARK: - View Lifecycle
     
@@ -33,8 +34,10 @@ class CreateTaskViewController: UIViewController {
     @IBAction func save(_ sender: UIBarButtonItem) {
         guard let name = nameTextField.text, !name.isEmpty else {return}
         let notes = notesTextView.text
+        let priorityIndex = prirotiyControl.selectedSegmentIndex
+        let priority = TaskPriority.allCases[priorityIndex]
         
-        Task(name: name, notes: notes, complete: complete)
+        Task(name: name, notes: notes, complete: complete, priority: priority)
         do {
             try CoreDataStack.shared.mainContext.save()
             navigationController?.dismiss(animated: true, completion: nil)

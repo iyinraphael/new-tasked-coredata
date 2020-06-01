@@ -18,6 +18,8 @@
 		EB410661247EE498008CD478 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB41065F247EE498008CD478 /* Tasks.xcdatamodeld */; };
 		EB410663247EED6F008CD478 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB410662247EED6F008CD478 /* CoreDataStack.swift */; };
 		EB410665247EF9B4008CD478 /* Task+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB410664247EF9B4008CD478 /* Task+Convenience.swift */; };
+		EBA0658F2485490200026E73 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0658E2485490200026E73 /* TaskController.swift */; };
+		EBA0659124854F3A00026E73 /* TaskRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0659024854F3A00026E73 /* TaskRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,9 @@
 		EB410660247EE498008CD478 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 		EB410662247EED6F008CD478 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EB410664247EF9B4008CD478 /* Task+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Convenience.swift"; sourceTree = "<group>"; };
+		EB410698248167A9008CD478 /* Tasks 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tasks 2.xcdatamodel"; sourceTree = "<group>"; };
+		EBA0658E2485490200026E73 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		EBA0659024854F3A00026E73 /* TaskRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +71,7 @@
 		CEB451C6244E59CD00E5F9AD /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				EBA0658D2484A35A00026E73 /* Task Controller */,
 				CEB451E1244E5B5700E5F9AD /* Application */,
 				EB41065C247EE1A4008CD478 /* Model */,
 				CEB451E2244E5B6000E5F9AD /* View Controllers */,
@@ -110,8 +116,17 @@
 				EB41065F247EE498008CD478 /* Tasks.xcdatamodeld */,
 				EB410662247EED6F008CD478 /* CoreDataStack.swift */,
 				EB410664247EF9B4008CD478 /* Task+Convenience.swift */,
+				EBA0659024854F3A00026E73 /* TaskRepresentation.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EBA0658D2484A35A00026E73 /* Task Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EBA0658E2485490200026E73 /* TaskController.swift */,
+			);
+			path = "Task Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,10 +204,12 @@
 				CEB451C8244E59CD00E5F9AD /* AppDelegate.swift in Sources */,
 				EB410661247EE498008CD478 /* Tasks.xcdatamodeld in Sources */,
 				CEB451CA244E59CD00E5F9AD /* SceneDelegate.swift in Sources */,
+				EBA0658F2485490200026E73 /* TaskController.swift in Sources */,
 				EB410665247EF9B4008CD478 /* Task+Convenience.swift in Sources */,
 				CEB451DE244E5B3E00E5F9AD /* TasksTableViewController.swift in Sources */,
 				CEB451DC244E5B3300E5F9AD /* TaskTableViewCell.swift in Sources */,
 				CEB451E0244E5B4800E5F9AD /* CreateTaskViewController.swift in Sources */,
+				EBA0659124854F3A00026E73 /* TaskRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,9 +410,10 @@
 		EB41065F247EE498008CD478 /* Tasks.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EB410698248167A9008CD478 /* Tasks 2.xcdatamodel */,
 				EB410660247EE498008CD478 /* Tasks.xcdatamodel */,
 			);
-			currentVersion = EB410660247EE498008CD478 /* Tasks.xcdatamodel */;
+			currentVersion = EB410698248167A9008CD478 /* Tasks 2.xcdatamodel */;
 			path = Tasks.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
