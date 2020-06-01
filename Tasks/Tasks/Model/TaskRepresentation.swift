@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct TaskRepesentation {
+struct TaskRepesentation : Codable {
     var identifier: String
     var name: String
     var notes: String?
     var priority: String
-    var complete: Bool?
+    var complete: Bool
 }

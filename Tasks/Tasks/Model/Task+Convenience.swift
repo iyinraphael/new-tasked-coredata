@@ -18,6 +18,17 @@ enum TaskPriority: String, CaseIterable {
 }
 
 extension Task {
+    
+    var taskRepresentation: TaskRepesentation? {
+        guard let id = identifier,
+        let name = name,
+        let priority = priority else {
+                return nil
+        }
+        
+        return TaskRepesentation(identifier: id.uuidString, name: name, notes: notes, priority: priority, complete: complete)
+    }
+    
     @discardableResult convenience init(identifier: UUID = UUID(),
                      name: String,
                      notes: String? = nil,
@@ -30,6 +41,15 @@ extension Task {
         self.notes = notes
         self.complete = complete
         self.priority = priority.rawValue
+    }
+    
+    //Failable
+    @discardableResult convenience init?(taskRespresention: TaskRepesentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext){
+        guard let identifier = UUID(uuidString: taskRespresention.identifier),
+            let prirority = TaskPriority(rawValue: taskRespresention.priority) else {return nil}
+        
+        self.init(identifier: identifier, name: taskRespresention.name, notes: taskRespresention.notes, complete: taskRespresention.complete, priority: prirority, context: context)
+        
     }
     
 }
