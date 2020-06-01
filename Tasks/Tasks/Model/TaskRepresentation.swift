@@ -14,4 +14,5 @@ struct TaskRepesentation : Codable {
     var notes: String?
     var priority: String
     var complete: Bool
+
 }
