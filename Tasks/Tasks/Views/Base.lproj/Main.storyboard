@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" title="Tasks" id="wW6-Vw-jhz">
                         <barButtonItem key="rightBarButtonItem" image="plus.circle" catalog="system" id="wgc-At-3Ne">
                             <connections>
-                                <segue destination="OJd-JF-q2n" kind="presentation" modalPresentationStyle="fullScreen" id="cVY-9X-W3N"/>
+                                <segue destination="OJd-JF-q2n" kind="presentation" identifier="createTaskSegue" modalPresentationStyle="fullScreen" id="cVY-9X-W3N"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

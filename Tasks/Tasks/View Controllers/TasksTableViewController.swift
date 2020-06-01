@@ -27,6 +27,7 @@ class TasksTableViewController: UITableViewController {
         return frc
     }()
     
+    let taskController = TaskController()
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,15 +58,22 @@ class TasksTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let task = fetchResultController.object(at: indexPath)
-            let context = CoreDataStack.shared.mainContext
-            context.delete(task)
-            do {
-                try context.save()
-            } catch {
-                context.reset()
-                NSLog("Error saving managed object context (delete task: \(error)")
+            taskController.deleteTaskFromServer(task) { result  in
+                
+                guard let _ = try? result.get() else {
+                    return
+                    
+                }
+                
+                let context = CoreDataStack.shared.mainContext
+                context.delete(task)
+                do {
+                    try context.save()
+                } catch {
+                    context.reset()
+                    NSLog("Error saving managed object context (delete task: \(error)")
+                }
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
@@ -73,8 +81,14 @@ class TasksTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // inject dependecy 
+        
+        if segue.identifier == "createTaskSegue" {
+            if let navC = segue.destination as? UINavigationController,
+                let createTaskVC = navC.viewControllers.first as? CreateTaskViewController {
+                createTaskVC.taskcontoller = taskController
+            }
+        }
     }
 }
 
@@ -123,6 +137,8 @@ extension TasksTableViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             guard let indexPath = indexPath else { return }
             tableView.deleteRows(at: [indexPath], with: .automatic)
+        @unknown default:
+            fatalError()
         }
     }
 }

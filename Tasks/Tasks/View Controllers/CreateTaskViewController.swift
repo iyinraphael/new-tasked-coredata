@@ -12,6 +12,7 @@ class CreateTaskViewController: UIViewController {
 
     // MARK: - Properties
     var complete = false
+    var taskcontoller: TaskController?
     
     // MARK: - IBOutlets
     
@@ -37,7 +38,8 @@ class CreateTaskViewController: UIViewController {
         let priorityIndex = prirotiyControl.selectedSegmentIndex
         let priority = TaskPriority.allCases[priorityIndex]
         
-        Task(name: name, notes: notes, complete: complete, priority: priority)
+        let task = Task(name: name, notes: notes, complete: complete, priority: priority)
+        taskcontoller?.sendTaskServer(task: task)
         do {
             try CoreDataStack.shared.mainContext.save()
             navigationController?.dismiss(animated: true, completion: nil)
